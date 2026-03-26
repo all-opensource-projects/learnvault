@@ -64,16 +64,16 @@ export class EmailService {
 	async sendAdminMilestoneNotification(
 		scholarName: string,
 		courseSlug: string,
-		milestoneId: string
+		milestoneId: string,
 	): Promise<boolean> {
-		const adminEmail = process.env.ADMIN_EMAIL;
+		const adminEmail = process.env.ADMIN_EMAIL
 
 		if (!adminEmail) {
-			console.warn("[EmailService] ADMIN_EMAIL not set, skipping notification.");
-			return false;
+			console.warn("[EmailService] ADMIN_EMAIL not set, skipping notification.")
+			return false
 		}
 
-		const adminLink = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/admin/reviews`;
+		const adminLink = `${process.env.FRONTEND_URL || "http://localhost:3000"}/admin/reviews`
 
 		return this.sendNotification({
 			to: adminEmail,
@@ -82,11 +82,10 @@ export class EmailService {
 			data: {
 				body: `Scholar <strong>${scholarName}</strong> has submitted a report for <strong>${courseSlug}</strong> (Milestone ${milestoneId}).`,
 				adminUrl: adminLink,
-				unsubscribeUrl: "#"
-			}
-		});
+				unsubscribeUrl: "#",
+			},
+		})
 	}
 }
 
 export const createEmailService = (apiKey: string) => new EmailService(apiKey)
-

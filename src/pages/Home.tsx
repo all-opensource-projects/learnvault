@@ -61,12 +61,13 @@ const Home: React.FC = () => {
 									New Learner Flow
 								</p>
 								<h2 className="mt-3 text-3xl font-black tracking-tight md:text-4xl">
-									Launch the guided wallet-and-enrollment setup only when you need it.
+									Launch the guided wallet-and-enrollment setup only when you
+									need it.
 								</h2>
 								<p className="mt-3 text-base leading-relaxed text-white/60">
-									The onboarding assistant is still available, but it now loads on
-									demand so the dashboard shell reaches first paint faster on mobile
-									data.
+									The onboarding assistant is still available, but it now loads
+									on demand so the dashboard shell reaches first paint faster on
+									mobile data.
 								</p>
 							</div>
 							<Button
@@ -127,8 +128,12 @@ const Home: React.FC = () => {
 									</p>
 								</div>
 								<div className="md:w-2/3 w-full">
-									<DeferredSection fallback={<SectionSkeleton className="min-h-40" />}>
-										<Suspense fallback={<SectionSkeleton className="min-h-40" />}>
+									<DeferredSection
+										fallback={<SectionSkeleton className="min-h-40" />}
+									>
+										<Suspense
+											fallback={<SectionSkeleton className="min-h-40" />}
+										>
 											<MilestoneTracker
 												courseId="stellar-basics"
 												milestones={mockMilestones}
@@ -164,7 +169,9 @@ const Home: React.FC = () => {
 									</Link>{" "}
 									{t("home.sampleContracts.guessDesc2")}
 								</p>
-								<DeferredSection fallback={<SectionSkeleton className="min-h-40" />}>
+								<DeferredSection
+									fallback={<SectionSkeleton className="min-h-40" />}
+								>
 									<Suspense fallback={<SectionSkeleton className="min-h-40" />}>
 										<GuessTheNumber />
 									</Suspense>

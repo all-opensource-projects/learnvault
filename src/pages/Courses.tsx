@@ -2,8 +2,8 @@ import React, { useCallback, useEffect, useMemo, useState } from "react"
 import { Link, useSearchParams } from "react-router-dom"
 import { CourseFilter } from "../components/CourseFilter"
 import Pagination from "../components/Pagination"
-import { courses } from "../data/courses"
 import { CourseCardSkeleton } from "../components/skeletons/CourseCardSkeleton"
+import { courses } from "../data/courses"
 
 const levelStyles: Record<(typeof courses)[number]["level"], string> = {
 	Beginner: "bg-brand-emerald/20 text-brand-emerald border-brand-emerald/20",
@@ -30,8 +30,7 @@ const Courses: React.FC = () => {
 	const difficulty = searchParams.get("difficulty") ?? ""
 	const track = searchParams.get("track") ?? ""
 	const parsedPage = parseInt(searchParams.get("page") || "1", 10)
-	const currentPage =
-		isNaN(parsedPage) || parsedPage < 1 ? 1 : parsedPage
+	const currentPage = isNaN(parsedPage) || parsedPage < 1 ? 1 : parsedPage
 
 	// Simulate loading state
 	useEffect(() => {
@@ -124,7 +123,10 @@ const Courses: React.FC = () => {
 	const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE))
 	const safePage = Math.min(currentPage, totalPages)
 	const startIndex = (safePage - 1) * ITEMS_PER_PAGE
-	const paginatedCourses = filtered.slice(startIndex, startIndex + ITEMS_PER_PAGE)
+	const paginatedCourses = filtered.slice(
+		startIndex,
+		startIndex + ITEMS_PER_PAGE,
+	)
 
 	return (
 		<div className="container mx-auto px-4 py-12">

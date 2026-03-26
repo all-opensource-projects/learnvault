@@ -83,7 +83,10 @@ export default function ProposalCountdown({
 			setState(newState)
 
 			// Announce time changes for screen readers (every minute)
-			if (newState.secondsRemaining % 60 === 0 && newState.secondsRemaining > 0) {
+			if (
+				newState.secondsRemaining % 60 === 0 &&
+				newState.secondsRemaining > 0
+			) {
 				setAnnouncement(`Voting time remaining: ${newState.label}`)
 			}
 		}, 6000) // Update every 6 seconds (1 ledger time)
@@ -92,7 +95,8 @@ export default function ProposalCountdown({
 	}, [deadlineLedger, currentLedger])
 
 	// Calculate progress for visual indicator
-	const totalLedgers = deadlineLedger - currentLedger + state.secondsRemaining / 6
+	const totalLedgers =
+		deadlineLedger - currentLedger + state.secondsRemaining / 6
 	const progress = Math.min(
 		100,
 		Math.max(0, (state.secondsRemaining / (totalLedgers * 6)) * 100),
